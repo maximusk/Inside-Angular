@@ -1,4 +1,4 @@
-import {ApplicationRef, Component} from '@angular/core';
+import {ApplicationRef, ChangeDetectorRef, Component} from '@angular/core';
 
 
 @Component({
@@ -8,7 +8,7 @@ import {ApplicationRef, Component} from '@angular/core';
 export class AppComponent {
     prop = `Element Input Binding Update`;
 
-    constructor(app: ApplicationRef) {
-        setTimeout(() => { this.prop = 'updated'; app.tick() }, 2000);
+    constructor(cd: ChangeDetectorRef) {
+        setTimeout(() => { this.prop = 'updated'; cd.detectChanges() }, 2000);
     }
 }
