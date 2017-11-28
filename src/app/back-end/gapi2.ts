@@ -11,7 +11,7 @@ window.gapi = {
     },
     jsonp() {
         const script = document.createElement('script');
-        script.src = 'src/app/data.js';
+        script.src = 'src/app/back-end/data.js';
         document.head.appendChild(script);
     },
     whenLoaded(data) {
