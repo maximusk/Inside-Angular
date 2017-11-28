@@ -13,5 +13,6 @@ export class AppComponent {
     v = `value from parent`;
 
     fn() {
+        this.v = 'updated';
     }
 }
