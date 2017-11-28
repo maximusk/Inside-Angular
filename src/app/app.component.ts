@@ -7,6 +7,6 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
     getValue() {
-        return `Element Input Binding Update`
+        return Math.random();
     }
 }
