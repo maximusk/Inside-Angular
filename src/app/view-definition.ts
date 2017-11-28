@@ -6,7 +6,7 @@ viewDef(0, [
 
 function updateRenderer(_ck, _v) {
     const _co = _v.component;
-    const currVal_0 = _co.prop;
+    const currVal_0 = _co.getValue();
     _ck(_v, 0, 0, currVal_0);
 }
 
