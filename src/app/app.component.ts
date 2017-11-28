@@ -10,11 +10,15 @@ declare const gapi;
 export class AppComponent {
     prop = `Element Input Binding Update`;
 
-    constructor() {
-        poll((v) => {
-            this.prop = v;
-            console.log('updating value to `${v}`');
-        })
+    constructor(zone: NgZone) {
+        zone.runOutsideAngular(() => {
+            poll((v) => {
+                zone.run(() => {
+                    this.prop = v;
+                    console.log('updating value to `${v}`');
+                });
+            })
+        });
     }
 
     ngDoCheck() {
