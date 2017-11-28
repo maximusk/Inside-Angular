@@ -1,5 +1,6 @@
-import {ApplicationRef, ChangeDetectorRef, Component} from '@angular/core';
+import { Component } from '@angular/core';
 
+declare const gapi;
 
 @Component({
     selector: 'my-app',
@@ -8,7 +9,9 @@ import {ApplicationRef, ChangeDetectorRef, Component} from '@angular/core';
 export class AppComponent {
     prop = `Element Input Binding Update`;
 
-    constructor(cd: ChangeDetectorRef) {
-        setTimeout(() => { this.prop = 'updated'; cd.markForCheck() }, 2000);
+    constructor() {
+        gapi.load('client', (data) => {
+            this.prop = data.prop;
+        });
     }
 }

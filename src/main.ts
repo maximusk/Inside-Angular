@@ -4,4 +4,4 @@ import { enableProdMode } from '@angular/core';
 
 enableProdMode();
 
-platformBrowserDynamic().bootstrapModule(AppModule, {ngZone: 'noop'});
+platformBrowserDynamic().bootstrapModule(AppModule);
