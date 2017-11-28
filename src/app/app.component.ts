@@ -1,4 +1,5 @@
 import { Component, NgZone } from '@angular/core';
+import { poll } from './polling';
 
 declare const gapi;
 
@@ -9,11 +10,14 @@ declare const gapi;
 export class AppComponent {
     prop = `Element Input Binding Update`;
 
-    constructor(zone: NgZone) {
-        gapi.load('client', (data) => {
-            zone.run(() => {
-                this.prop = data.prop;
-            });
-        });
+    constructor() {
+        poll((v) => {
+            this.prop = v;
+            console.log('updating value to `${v}`');
+        })
+    }
+
+    ngDoCheck() {
+        console.log('detecting changes');
     }
 }
