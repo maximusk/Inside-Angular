@@ -1,12 +1,14 @@
-import {Component} from '@angular/core';
+import {ApplicationRef, Component} from '@angular/core';
 
 
 @Component({
     selector: 'my-app',
-    template: `<span [textContent]="getValue()"></span>`
+    template: `<span [textContent]="prop"></span>`
 })
 export class AppComponent {
-    getValue() {
-        return Math.random();
+    prop = `Element Input Binding Update`;
+
+    constructor(app: ApplicationRef) {
+        setTimeout(() => { this.prop = 'updated'; app.tick() }, 2000);
     }
 }
