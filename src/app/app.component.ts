@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 declare const gapi;
 
@@ -9,9 +9,11 @@ declare const gapi;
 export class AppComponent {
     prop = `Element Input Binding Update`;
 
-    constructor() {
+    constructor(zone: NgZone) {
         gapi.load('client', (data) => {
-            this.prop = data.prop;
+            zone.run(() => {
+                this.prop = data.prop;
+            });
         });
     }
 }
