@@ -6,7 +6,8 @@
 
         map: {
             // maps plain `app` module to `app` package
-            app: 'app',
+            main: 'src/main.js',
+            app: 'src/app',
 
             // angular bundles
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -20,14 +21,9 @@
         },
 
         packages: {
-            app: {
-                main: './main.js',
+            'src': {
                 defaultExtension: 'js',
-                meta: {
-                    '': {
-                        format: 'cjs'
-                    }
-                }
+                format: 'cjs'
             },
             rxjs: {
                 defaultExtension: 'js'
