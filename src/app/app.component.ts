@@ -1,27 +1,17 @@
 import { Component, NgZone } from '@angular/core';
-import { poll } from './polling';
-
-declare const gapi;
 
 @Component({
     selector: 'my-app',
-    template: `<span [textContent]="prop"></span>`
+    template: `
+        <div style="margin-bottom: 10px">
+            <button (click)="fn()">Trigger change detection</button>
+        </div>
+        <a-comp [i]="v"></a-comp>
+    `
 })
 export class AppComponent {
-    prop = `Element Input Binding Update`;
+    v = `value from parent`;
 
-    constructor(zone: NgZone) {
-        zone.runOutsideAngular(() => {
-            poll((v) => {
-                zone.run(() => {
-                    this.prop = v;
-                    console.log('updating value to `${v}`');
-                });
-            })
-        });
-    }
-
-    ngDoCheck() {
-        console.log('detecting changes');
+    fn() {
     }
 }
