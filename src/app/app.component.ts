@@ -9,6 +9,6 @@ export class AppComponent {
     prop = `Element Input Binding Update`;
 
     constructor(cd: ChangeDetectorRef) {
-        setTimeout(() => { this.prop = 'updated'; cd.detectChanges() }, 2000);
+        setTimeout(() => { this.prop = 'updated'; cd.markForCheck() }, 2000);
     }
 }
