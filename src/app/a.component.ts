@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
     selector: 'a-comp',
@@ -10,10 +11,17 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AComponent {
+    s = new Subject();
     @Input() i;
 
-    fn() {
-        console.log('updating AComponent `i` property from setTimeout');
-        this.i = 'updated from setTimeout';
+    constructor() {
+        this.s.subscribe((v) => {
+            this.i = v;
+        });
+
+        setTimeout(() => {
+            console.log('updating AComponent `i` property from setTimeout through subject');
+            this.s.next('updated from Subject');
+        }, 2000);
     }
 }
