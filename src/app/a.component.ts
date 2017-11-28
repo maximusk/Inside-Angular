@@ -10,4 +10,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class AComponent {
     @Input() i;
+
+    constructor() {
+        setTimeout(() => {
+            console.log('updating AComponent `i` property from setTimeout');
+            this.i = 'updated from setTimeout';
+        }, 3000);
+    }
 }

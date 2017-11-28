@@ -6,7 +6,7 @@ import { Component, NgZone } from '@angular/core';
         <div style="margin-bottom: 10px">
             <button (click)="fn()">Trigger change detection</button>
         </div>
-        <a-comp [i]="v"></a-comp>
+        <a-comp></a-comp>
     `
 })
 export class AppComponent {
