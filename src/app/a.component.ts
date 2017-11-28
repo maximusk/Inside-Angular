@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 
 @Component({
     selector: 'a-comp',
@@ -11,10 +11,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class AComponent {
     @Input() i;
 
-    constructor() {
+    constructor(cd: ChangeDetectorRef) {
         setTimeout(() => {
             console.log('updating AComponent `i` property from setTimeout');
             this.i = 'updated from setTimeout';
+            cd.markForCheck();
         }, 3000);
     }
 }
